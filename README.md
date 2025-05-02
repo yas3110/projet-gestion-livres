@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Projet Gestion de Livres (Angular + Spring Boot + PostgreSQL + Kubernetes)
 
 ## Présentation
@@ -18,6 +19,27 @@ frontend-service backend-service postgres-service
 |Kubernetes Cluster|
 
 
+=======
+# Projet Gestion de Livres – Microservices (Angular + Spring Boot + PostgreSQL + Kubernetes)
+
+## Présentation
+
+Ce projet illustre une architecture **microservices** pour la gestion de livres :
+- **Microservice Frontend** : Angular servi par Nginx (indépendant)
+- **Microservice Backend** : Spring Boot (Java, indépendant)
+- **Base de données** : PostgreSQL (service dédié)
+- **Déploiement** : Kubernetes (Minikube), prêt pour la production avec Ingress
+
+Chaque composant est packagé, déployé et scalable indépendamment.
+
+---
+
+## Architecture
+[Microservice Frontend: Angular/Nginx] <---> [Microservice Backend: Spring Boot] <---> [Service PostgreSQL]
+| | |
+frontend-service backend-service postgres-service
+|Kubernetes Cluster____|
+>>>>>>> af0fc12 (Ajout du README microservices)
 
 ---
 
@@ -36,6 +58,7 @@ frontend-service backend-service postgres-service
 
 projet-gestion-livres/
 │
+<<<<<<< HEAD
 ├── kubernetes
 │  └── backend-deployment.yaml
 │ └──backend-service.yaml
@@ -50,6 +73,22 @@ projet-gestion-livres/
 │ └── application.properties
 │
 ├── book-frontend/ # Code Angular + Dockerfile + nginx/default.conf
+=======
+├── kubernetes/
+│ ├── backend-deployment.yaml
+│ ├── backend-service.yaml
+│ ├── frontend-deployment.yaml
+│ ├── frontend-service.yaml
+│ ├── postgres-deployement.yaml
+│ ├── postgres-service.yaml
+│ └── ingress.yaml
+│
+├── book-service/ # Microservice backend (Spring Boot)
+│ └── src/...
+│ └── application.properties
+│
+├── book-frontend/ # Microservice frontend (Angular + Dockerfile + nginx/default.conf)
+>>>>>>> af0fc12 (Ajout du README microservices)
 │ └── src/...
 │ └── nginx/default.conf
 │ └── Dockerfile
@@ -57,6 +96,10 @@ projet-gestion-livres/
 └── README.md
 
 
+<<<<<<< HEAD
+=======
+---
+>>>>>>> af0fc12 (Ajout du README microservices)
 
 ## Déploiement local (Minikube)
 
@@ -66,6 +109,7 @@ minikube start --driver=docker
 minikube addons enable ingress
 
 
+<<<<<<< HEAD
 
 ### 2. Construction des images Docker dans l'environnement Minikube
 
@@ -96,12 +140,39 @@ kubectl apply -f ingress.yaml
 
 
 
+=======
+### 2. Construction des images Docker dans l'environnement Minikube
+
+eval $(minikube docker-env) # (Git Bash sous Windows)
+
+
+Build backend (Spring Boot)
+cd book-service
+docker build -t yasmine0301/book-backend:latest .
+
+Build frontend (Angular)
+cd ../book-frontend
+docker build -t book-frontend:final .
+
+### 3. Déploiement des ressources Kubernetes
+
+cd ../kubernetes
+kubectl apply -f postgres-service.yaml
+kubectl apply -f postgres-deployement.yaml
+kubectl apply -f backend-service.yaml
+kubectl apply -f backend-deployment.yaml
+kubectl apply -f frontend-service.yaml
+kubectl apply -f frontend-deployment.yaml
+kubectl apply -f ingress.yaml
+
+>>>>>>> af0fc12 (Ajout du README microservices)
 ### 4. (Optionnel) Vérification des pods et services
 
 kubectl get pods
 kubectl get services
 kubectl get ingress
 
+<<<<<<< HEAD
 
 
 ### 5. Tunnel pour l’Ingress (Windows/Docker)
@@ -111,6 +182,13 @@ minikube tunnel
 
 text
 
+=======
+### 5. Tunnel pour l’Ingress (Windows/Docker)
+
+Dans un terminal séparé : 
+minikube tunnel
+
+>>>>>>> af0fc12 (Ajout du README microservices)
 ### 6. Accès à l’application
 
 - **Frontend** : [http://localhost/](http://localhost/) ou [http://bookapp.local/](http://bookapp.local/) (si configuré dans le fichier hosts)
@@ -135,9 +213,15 @@ text
 
 ## Dépannage
 
+<<<<<<< HEAD
 - **Erreur 503 sur le frontend** : Vérifiez que l’image Docker frontend est bien buildée et que le pod est en état `Running`.
 - **ErrImagePull** : Vérifiez l’utilisation de `imagePullPolicy: Never` et que l’image existe dans le Docker de Minikube.
 - **Problème d’accès Ingress** : Assurez-vous d’avoir lancé `minikube tunnel` et que le fichier hosts pointe vers `127.0.0.1` ou l’IP de Minikube.
+=======
+- **Erreur 503 sur le frontend** : Vérifiez que l’image Docker frontend est bien buildée et que le pod est en état `Running`.
+- **ErrImagePull** : Vérifiez l’utilisation de `imagePullPolicy: Never` et que l’image existe dans le Docker de Minikube.
+- **Problème d’accès Ingress** : Assurez-vous d’avoir lancé `minikube tunnel` et que le fichier hosts pointe vers `127.0.0.1` ou l’IP de Minikube.
+>>>>>>> af0fc12 (Ajout du README microservices)
 
 ---
 
