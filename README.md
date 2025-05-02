@@ -16,9 +16,11 @@ Chaque composant est packagé, déployé et scalable indépendamment.
 ## Architecture
 [Microservice Frontend: Angular/Nginx] <---> [Microservice Backend: Spring Boot] <---> [Service PostgreSQL]
 | | |
+
 frontend-service backend-service postgres-service
+
 |Kubernetes Cluster____|
->>>>>>> af0fc12 (Ajout du README microservices)
+
 
 ---
 
@@ -64,6 +66,7 @@ projet-gestion-livres/
 ### 1. Démarrage du cluster et activation d'Ingress
 
 minikube start --driver=docker
+
 minikube addons enable ingress
 
 
