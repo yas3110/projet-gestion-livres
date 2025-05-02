@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Projet Gestion de Livres (Angular + Spring Boot + PostgreSQL + Kubernetes)
 
 ## Présentation
