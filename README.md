@@ -1,25 +1,4 @@
 
-# Projet Gestion de Livres (Angular + Spring Boot + PostgreSQL + Kubernetes)
-
-## Présentation
-
-Ce projet est une application complète de gestion de livres avec :
-- **Frontend** : Angular, servi par Nginx
-- **Backend** : Spring Boot (Java)
-- **Base de données** : PostgreSQL
-- **Déploiement** : Kubernetes (Minikube), prêt pour la production avec Ingress
-
----
-
-## Architecture
-
-[Angular/Nginx] <---> [Spring Boot] <---> [PostgreSQL]
-| | |
-frontend-service backend-service postgres-service
-|Kubernetes Cluster|
-
-
-=======
 # Projet Gestion de Livres – Microservices (Angular + Spring Boot + PostgreSQL + Kubernetes)
 
 ## Présentation
@@ -57,23 +36,6 @@ frontend-service backend-service postgres-service
 ## Structure du projet
 
 projet-gestion-livres/
-│
-<<<<<<< HEAD
-├── kubernetes
-│  └── backend-deployment.yaml
-│ └──backend-service.yaml
-│ └──frontend-deployment.yaml
-│ └── frontend-service.yaml
-│ └── postgres-deployement.yaml
-│ └── postgres-service.yaml
-│ └── ingress.yaml
-│
-├── book-service/bookservice # Code Spring Boot
-│ └── src/...
-│ └── application.properties
-│
-├── book-frontend/ # Code Angular + Dockerfile + nginx/default.conf
-=======
 ├── kubernetes/
 │ ├── backend-deployment.yaml
 │ ├── backend-service.yaml
@@ -88,7 +50,6 @@ projet-gestion-livres/
 │ └── application.properties
 │
 ├── book-frontend/ # Microservice frontend (Angular + Dockerfile + nginx/default.conf)
->>>>>>> af0fc12 (Ajout du README microservices)
 │ └── src/...
 │ └── nginx/default.conf
 │ └── Dockerfile
@@ -96,10 +57,7 @@ projet-gestion-livres/
 └── README.md
 
 
-<<<<<<< HEAD
-=======
----
->>>>>>> af0fc12 (Ajout du README microservices)
+
 
 ## Déploiement local (Minikube)
 
@@ -109,38 +67,7 @@ minikube start --driver=docker
 minikube addons enable ingress
 
 
-<<<<<<< HEAD
 
-### 2. Construction des images Docker dans l'environnement Minikube
-
-eval $(minikube docker-env) # Sur Windows PowerShell : minikube docker-env | Invoke-Expression
-
-Build backend
-cd book-backend
-docker build -t yasmine0301/book-backend:latest .
-
-Build frontend
-cd ../book-frontend
-docker build -t book-frontend:final .
-
-
-
-### 3. Déploiement des ressources Kubernetes
-
-kubectl apply -f postgres-service.yaml
-kubectl apply -f postgres-deployement.yaml
-
-kubectl apply -f backend-service.yaml
-kubectl apply -f backend-deployment.yaml
-
-kubectl apply -f frontend-service.yaml
-kubectl apply -f frontend-deployment.yaml
-
-kubectl apply -f ingress.yaml
-
-
-
-=======
 ### 2. Construction des images Docker dans l'environnement Minikube
 
 eval $(minikube docker-env) # (Git Bash sous Windows)
@@ -165,30 +92,23 @@ kubectl apply -f frontend-service.yaml
 kubectl apply -f frontend-deployment.yaml
 kubectl apply -f ingress.yaml
 
->>>>>>> af0fc12 (Ajout du README microservices)
+
 ### 4. (Optionnel) Vérification des pods et services
 
 kubectl get pods
 kubectl get services
 kubectl get ingress
 
-<<<<<<< HEAD
 
 
-### 5. Tunnel pour l’Ingress (Windows/Docker)
 
-Dans un terminal séparé :
-minikube tunnel
 
-text
-
-=======
 ### 5. Tunnel pour l’Ingress (Windows/Docker)
 
 Dans un terminal séparé : 
 minikube tunnel
 
->>>>>>> af0fc12 (Ajout du README microservices)
+
 ### 6. Accès à l’application
 
 - **Frontend** : [http://localhost/](http://localhost/) ou [http://bookapp.local/](http://bookapp.local/) (si configuré dans le fichier hosts)
@@ -213,15 +133,11 @@ minikube tunnel
 
 ## Dépannage
 
-<<<<<<< HEAD
-- **Erreur 503 sur le frontend** : Vérifiez que l’image Docker frontend est bien buildée et que le pod est en état `Running`.
-- **ErrImagePull** : Vérifiez l’utilisation de `imagePullPolicy: Never` et que l’image existe dans le Docker de Minikube.
-- **Problème d’accès Ingress** : Assurez-vous d’avoir lancé `minikube tunnel` et que le fichier hosts pointe vers `127.0.0.1` ou l’IP de Minikube.
-=======
+
 - **Erreur 503 sur le frontend** : Vérifiez que l’image Docker frontend est bien buildée et que le pod est en état `Running`.
 - **ErrImagePull** : Vérifiez l’utilisation de `imagePullPolicy: Never` et que l’image existe dans le Docker de Minikube.
 - **Problème d’accès Ingress** : Assurez-vous d’avoir lancé `minikube tunnel` et que le fichier hosts pointe vers `127.0.0.1` ou l’IP de Minikube.
->>>>>>> af0fc12 (Ajout du README microservices)
+
 
 ---
 
