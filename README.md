@@ -15,6 +15,7 @@ Chaque composant est packagé, déployé et scalable indépendamment.
 
 ## Architecture
 [Microservice Frontend: Angular/Nginx] <---> [Microservice Backend: Spring Boot] <---> [Service PostgreSQL]
+
 | | |
 
 frontend-service backend-service postgres-service
@@ -38,22 +39,35 @@ frontend-service backend-service postgres-service
 ## Structure du projet
 
 projet-gestion-livres/
+
 ├── kubernetes/
+
 │ ├── backend-deployment.yaml
+
 │ ├── backend-service.yaml
+
 │ ├── frontend-deployment.yaml
+
 │ ├── frontend-service.yaml
+
 │ ├── postgres-deployement.yaml
+
 │ ├── postgres-service.yaml
+
 │ └── ingress.yaml
 │
 ├── book-service/ # Microservice backend (Spring Boot)
+
 │ └── src/...
+
 │ └── application.properties
 │
 ├── book-frontend/ # Microservice frontend (Angular + Dockerfile + nginx/default.conf)
+
 │ └── src/...
+
 │ └── nginx/default.conf
+
 │ └── Dockerfile
 │
 └── README.md
