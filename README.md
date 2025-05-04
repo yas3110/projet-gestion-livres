@@ -20,7 +20,7 @@ Chaque composant est packagé, déployé et scalable indépendamment.
 
        frontend-service                      backend-service                            postgres-service
 
-|_________________________________________Kubernetes Cluster__________________________________________|                                     
+                                          |  Kubernetes Cluster |                                     
 
 
 ---
@@ -35,44 +35,6 @@ Chaque composant est packagé, déployé et scalable indépendamment.
 - (Optionnel) [PostgreSQL client](https://www.postgresql.org/download/)
 
 ---
-
-## Structure du projet
-
-projet-gestion-livres/
-
-├── kubernetes/
-
-  └── backend-deployment.yaml
-
-  └── backend-service.yaml
-
-  └── frontend-deployment.yaml
-
-  └── frontend-service.yaml
-
-  └── postgres-deployement.yaml
-
-  └── postgres-service.yaml
-
-  └── ingress.yaml
-│
-├── book-service/ # Microservice backend (Spring Boot)
-
-  └── src/...
-
-  └── application.properties
-│
-├── book-frontend/ # Microservice frontend (Angular + Dockerfile + nginx/default.conf)
-
-  └── src/...
-
-  └── nginx/default.conf
-
-  └── Dockerfile
-│
-└── README.md
-
-
 
 
 ## Déploiement local (Minikube)
