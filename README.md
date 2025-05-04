@@ -16,11 +16,11 @@ Chaque composant est packagé, déployé et scalable indépendamment.
 ## Architecture
 [Microservice Frontend: Angular/Nginx] <---> [Microservice Backend: Spring Boot] <---> [Service PostgreSQL]
 
-| | |
+                |                                  |                                          |
 
-frontend-service backend-service postgres-service
+       frontend-service                      backend-service                            postgres-service
 
-|Kubernetes Cluster____|
+|_________________________________________Kubernetes Cluster__________________________________________|                                     
 
 
 ---
@@ -42,33 +42,33 @@ projet-gestion-livres/
 
 ├── kubernetes/
 
-│ ├── backend-deployment.yaml
+  └── backend-deployment.yaml
 
-│ ├── backend-service.yaml
+  └── backend-service.yaml
 
-│ ├── frontend-deployment.yaml
+  └── frontend-deployment.yaml
 
-│ ├── frontend-service.yaml
+  └── frontend-service.yaml
 
-│ ├── postgres-deployement.yaml
+  └── postgres-deployement.yaml
 
-│ ├── postgres-service.yaml
+  └── postgres-service.yaml
 
-│ └── ingress.yaml
+  └── ingress.yaml
 │
 ├── book-service/ # Microservice backend (Spring Boot)
 
-│ └── src/...
+  └── src/...
 
-│ └── application.properties
+  └── application.properties
 │
 ├── book-frontend/ # Microservice frontend (Angular + Dockerfile + nginx/default.conf)
 
-│ └── src/...
+  └── src/...
 
-│ └── nginx/default.conf
+  └── nginx/default.conf
 
-│ └── Dockerfile
+  └── Dockerfile
 │
 └── README.md
 
@@ -101,19 +101,28 @@ docker build -t book-frontend:final .
 ### 3. Déploiement des ressources Kubernetes
 
 cd ../kubernetes
+
 kubectl apply -f postgres-service.yaml
+
 kubectl apply -f postgres-deployement.yaml
+
 kubectl apply -f backend-service.yaml
+
 kubectl apply -f backend-deployment.yaml
+
 kubectl apply -f frontend-service.yaml
+
 kubectl apply -f frontend-deployment.yaml
+
 kubectl apply -f ingress.yaml
 
 
 ### 4. (Optionnel) Vérification des pods et services
 
 kubectl get pods
+
 kubectl get services
+
 kubectl get ingress
 
 
