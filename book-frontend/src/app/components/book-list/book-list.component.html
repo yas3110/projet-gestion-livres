@@ -1,0 +1,49 @@
+<div class="container">
+  <h2>Liste des Livres</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Titre</th>
+        <th>Auteur</th>
+        <th>ISBN</th>
+        <th>Actions</th> <!-- nouvelle colonne -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{ book.id }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.isbn }}</td>
+        <td>
+          <!-- Bouton de suppression -->
+          <button class="btn btn-danger btn-sm" (click)="deleteBook(book)">Supprimer</button>
+          <!-- Bouton de modification -->
+          <button class="btn btn-warning btn-sm" (click)="editBook(book)">Modifier</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Formulaire pour modifier un livre, affiché uniquement si un livre est sélectionné -->
+  <div *ngIf="selectedBook" class="mt-4">
+    <h3>Modifier le Livre</h3>
+    <form (ngSubmit)="updateBook()">
+      <div class="mb-2">
+        <label>Titre :</label>
+        <input class="form-control" [(ngModel)]="selectedBook.title" name="title" required>
+      </div>
+      <div class="mb-2">
+        <label>Auteur :</label>
+        <input class="form-control" [(ngModel)]="selectedBook.author" name="author" required>
+      </div>
+      <div class="mb-2">
+        <label>ISBN :</label>
+        <input class="form-control" [(ngModel)]="selectedBook.isbn" name="isbn" required>
+      </div>
+      <button class="btn btn-success" type="submit">Enregistrer</button>
+      <button class="btn btn-secondary ms-2" type="button" (click)="selectedBook = null">Annuler</button>
+    </form>
+  </div>
+</div>
