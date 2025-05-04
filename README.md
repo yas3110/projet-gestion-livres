@@ -145,4 +145,4 @@ minikube tunnel
 
 ## Licence
 
-Ce projet est sous licence MIT (ou à adapter selon vos besoins).
+Ce projet est sous licence MIT .
