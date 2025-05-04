@@ -136,9 +136,10 @@ minikube tunnel
 
 ---
 
-## Auteur
+## Auteurs
 
 - Yasmine Alouache
+- Monia Merabti
 
 ---
 
